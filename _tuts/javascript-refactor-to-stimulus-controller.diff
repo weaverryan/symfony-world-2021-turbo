@@ -1,0 +1,59 @@
+diff --git a/assets/app.js b/assets/app.js
+index 0625944..b4f6aad 100644
+--- a/assets/app.js
++++ b/assets/app.js
+@@ -11,13 +11,6 @@ import './styles/app.css';
+ // start the Stimulus application
+ import './bootstrap';
+ 
+-const flockEl = document.getElementById('flock');
+-document.querySelector('.js-grow-flock').addEventListener('click', (event) => {
+-    event.preventDefault();
+-
+-    flockEl.innerHTML = flockEl.innerHTML + flockEl.dataset.animal;
+-});
+-
+ const syncButton = (linkElement) => {
+     document.querySelector('.js-custom-animal-target').innerHTML = linkElement.value || '☹️';
+ }
+diff --git a/assets/controllers/grow-flock-controller.js b/assets/controllers/grow-flock-controller.js
+new file mode 100644
+index 0000000..5e0b2f5
+--- /dev/null
++++ b/assets/controllers/grow-flock-controller.js
+@@ -0,0 +1,14 @@
++import { Controller } from 'stimulus';
++
++export default class extends Controller {
++    static values = {
++        animal: String
++    }
++
++    static targets = ['flock'];
++
++    grow(event) {
++        event.preventDefault();
++        this.flockTarget.innerHTML = this.flockTarget.innerHTML + this.animalValue;
++    }
++}
+diff --git a/templates/default/index.html.twig b/templates/default/index.html.twig
+index a7a71a6..d99dff7 100644
+--- a/templates/default/index.html.twig
++++ b/templates/default/index.html.twig
+@@ -4,11 +4,13 @@
+     <div class="container">
+         <h1>Grow your Flock of {{ chosenAnimal }}</h1>
+ 
+-        <div>
+-            <div class="flock" id="flock" data-animal="{{ chosenAnimal }}">
++        <div {{ stimulus_controller('grow-flock', {
++            animal: chosenAnimal
++        }) }}>
++            <div class="flock" {{ stimulus_target('grow-flock', 'flock') }}>
+                 {{ chosenAnimal }}
+             </div>
+-            <button class="js-grow-flock">Grow my flock!</button>
++            <button {{ stimulus_action('grow-flock', 'grow') }}>Grow my flock!</button>
+         </div>
+         <hr>
+         Change animal:

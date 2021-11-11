@@ -1,0 +1,115 @@
+{
+    "steps": [
+        {
+            "id": "start",
+            "name": "start",
+            "description": null
+        },
+        {
+            "id": "setup-install-twig",
+            "name": "Setup: Install Twig",
+            "description": null
+        },
+        {
+            "id": "setup-force-php-8",
+            "name": "Setup: force PHP 8",
+            "description": null
+        },
+        {
+            "id": "setup-install-forms",
+            "name": "Setup: Install forms",
+            "description": null
+        },
+        {
+            "id": "setup-install-validator",
+            "name": "Setup: install validator",
+            "description": null
+        },
+        {
+            "id": "setup-add-a-page",
+            "name": "Setup: Add a page!",
+            "description": null
+        },
+        {
+            "id": "setup-add-profiler",
+            "name": "Setup: add profiler",
+            "description": null
+        },
+        {
+            "id": "ux-install-encore",
+            "name": "UX: install encore",
+            "description": null
+        },
+        {
+            "id": "ux-yarn-install",
+            "name": "UX: yarn install",
+            "description": null
+        },
+        {
+            "id": "ux-add-some-styling",
+            "name": "UX: Add some styling",
+            "description": null
+        },
+        {
+            "id": "ux-add-javascript-for-our-site",
+            "name": "UX: Add JavaScript for our site!",
+            "description": null
+        },
+        {
+            "id": "turbo-install-it",
+            "name": "Turbo: install it",
+            "description": null
+        },
+        {
+            "id": "turbo-yarn-install-force",
+            "name": "Turbo: yarn install --force",
+            "description": null
+        },
+        {
+            "id": "javascript-add-log-examples",
+            "name": "JavaScript: add log examples",
+            "description": null
+        },
+        {
+            "id": "javascript-remove-log-code",
+            "name": "JavaScript: remove log code",
+            "description": null
+        },
+        {
+            "id": "javascript-refactor-to-stimulus-controller",
+            "name": "JavaScript: Refactor to Stimulus Controller",
+            "description": null
+        },
+        {
+            "id": "javascript-other-stimulus-controller",
+            "name": "JavaScript: Other Stimulus controller",
+            "description": null
+        },
+        {
+            "id": "form-renderform",
+            "name": "Form: renderForm()",
+            "description": null
+        },
+        {
+            "id": "react-enable-in-webpack",
+            "name": "React: enable in webpack",
+            "description": null
+        },
+        {
+            "id": "react-install-preset",
+            "name": "React: install preset",
+            "description": null
+        },
+        {
+            "id": "react-install-react-react-dom",
+            "name": "React: install react & react-dom",
+            "description": null
+        },
+        {
+            "id": "react-add-controller-component",
+            "name": "React: add controller & component",
+            "description": null
+        }
+    ],
+    "sha": "5a35af359592220e5e26ee65cc22520a67502683"
+}

@@ -1,0 +1,17 @@
+diff --git a/src/Controller/DefaultController.php b/src/Controller/DefaultController.php
+index bce90b7..a081de9 100644
+--- a/src/Controller/DefaultController.php
++++ b/src/Controller/DefaultController.php
+@@ -30,10 +30,10 @@ class DefaultController extends AbstractController
+ 
+         $animals = ['🐑', '🐵', '🦛', '🐧', '🐘'];
+ 
+-        return $this->render('default/index.html.twig', [
++        return $this->renderForm('default/index.html.twig', [
+             'chosenAnimal' => $animal,
+             'animals' => $animals,
+-            'form' => $form->createView(),
++            'form' => $form,
+         ]);
+     }
+ }

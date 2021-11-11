@@ -1,0 +1,41 @@
+diff --git a/composer.json b/composer.json
+index 8bd50a8..dc45ab2 100644
+--- a/composer.json
++++ b/composer.json
+@@ -4,7 +4,7 @@
+     "minimum-stability": "dev",
+     "prefer-stable": true,
+     "require": {
+-        "php": ">=7.2.5",
++        "php": "^8.0.0",
+         "ext-ctype": "*",
+         "ext-iconv": "*",
+         "symfony/console": "5.4.*",
+diff --git a/composer.lock b/composer.lock
+index afa6220..6caef66 100644
+--- a/composer.lock
++++ b/composer.lock
+@@ -4,7 +4,7 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "ce2a17792a1c6ff58cfe9d9ca0ad036a",
++    "content-hash": "5206f119ba839e6dc5f0e3cc8d1aa028",
+     "packages": [
+         {
+             "name": "psr/cache",
+@@ -3132,12 +3132,10 @@
+     "prefer-stable": true,
+     "prefer-lowest": false,
+     "platform": {
+-        "php": ">=7.2.5",
++        "php": "^8.0.0",
+         "ext-ctype": "*",
+         "ext-iconv": "*"
+     },
+-    "platform-dev": {
+-        "php": "*"
+-    },
++    "platform-dev": [],
+     "plugin-api-version": "2.1.0"
+ }

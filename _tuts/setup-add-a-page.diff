@@ -1,0 +1,96 @@
+diff --git a/config/routes.yaml b/config/routes.yaml
+index c3283aa..b662dc9 100644
+--- a/config/routes.yaml
++++ b/config/routes.yaml
+@@ -1,3 +1,3 @@
+-#index:
+-#    path: /
+-#    controller: App\Controller\DefaultController::index
++controllers:
++    resource: ../src/Controller/
++    type: annotation
+diff --git a/src/Controller/DefaultController.php b/src/Controller/DefaultController.php
+new file mode 100644
+index 0000000..bce90b7
+--- /dev/null
++++ b/src/Controller/DefaultController.php
+@@ -0,0 +1,39 @@
++<?php
++
++namespace App\Controller;
++
++use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
++use Symfony\Component\Form\Extension\Core\Type\TextType;
++use Symfony\Component\HttpFoundation\Request;
++use Symfony\Component\Routing\Annotation\Route;
++use Symfony\Component\Validator\Constraints\NotBlank;
++
++class DefaultController extends AbstractController
++{
++    #[Route('/{animal}', name: 'app_homepage')]
++    public function index(Request $request, string $animal = '🐑')
++    {
++        $form = $this->createFormBuilder()
++            ->add('animal', TextType::class, [
++                'constraints' => [new NotBlank()],
++                'data' => '🦖',
++            ])
++            ->getForm();
++
++        $form->handleRequest($request);
++
++        if ($form->isSubmitted() && $form->isValid()) {
++            return $this->redirectToRoute('app_homepage', [
++                'animal' => $form->get('animal')->getData(),
++            ]);
++        }
++
++        $animals = ['🐑', '🐵', '🦛', '🐧', '🐘'];
++
++        return $this->render('default/index.html.twig', [
++            'chosenAnimal' => $animal,
++            'animals' => $animals,
++            'form' => $form->createView(),
++        ]);
++    }
++}
+diff --git a/templates/default/index.html.twig b/templates/default/index.html.twig
+new file mode 100644
+index 0000000..1faacb6
+--- /dev/null
++++ b/templates/default/index.html.twig
+@@ -0,0 +1,34 @@
++{% extends 'base.html.twig' %}
++
++{% block body %}
++    <h1>Grow your Flock of {{ chosenAnimal }}</h1>
++
++    <div>
++        <div>
++            <div class="flock" id="flock">
++                {{ chosenAnimal }}
++            </div>
++            <a href="#" class="js-grow-flock">Grow my flock!</a>
++        </div>
++        {% for animal in animals %}
++            {% if animal == chosenAnimal %}
++                {{ animal }}
++            {% else %}
++                <a href="{{ path('app_homepage', {
++                    animal: animal
++                }) }}">{{ animal }}</a>
++            {% endif %}
++        {% endfor %}
++
++        {{ form_start(form) }}
++            or custom
++            <input
++                name="{{ field_name(form.animal) }}"
++                value="{{ field_value(form.animal) }}"
++                class="{{ field_errors(form.animal)|length > 0 ? 'has-error' }}"
++            />
++
++            <button type="submit" style="font-size: 1em;" formnovalidate>🦖</button>
++        {{ form_end(form) }}
++    </div>
++{% endblock %}
