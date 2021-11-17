@@ -209,6 +209,9 @@
             "templates/base.html.twig"
         ]
     },
+    "symfony/ux-chartjs": {
+        "version": "v1.3.0"
+    },
     "symfony/ux-turbo": {
         "version": "v1.3.0"
     },
