@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Grow your Flock of {{ chosenAnimal }}</h1>
+
+    <div>
+        <div>
+            <div class="flock" id="flock">
+                {{ chosenAnimal }}
+            </div>
+            <a href="#" class="js-grow-flock">Grow my flock!</a>
+        </div>
+        {% for animal in animals %}
+            {% if animal == chosenAnimal %}
+                {{ animal }}
+            {% else %}
+                <a href="{{ path('app_homepage', {
+                    animal: animal
+                }) }}">{{ animal }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {{ form_start(form) }}
+            or custom
+            <input
+                name="{{ field_name(form.animal) }}"
+                value="{{ field_value(form.animal) }}"
+                class="{{ field_errors(form.animal)|length > 0 ? 'has-error' }}"
+            />
+
+            <button type="submit" style="font-size: 1em;" formnovalidate>🦖</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
