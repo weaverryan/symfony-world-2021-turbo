@@ -91,6 +91,21 @@
             "description": null
         },
         {
+            "id": "delete-me-1",
+            "name": "delete me 1",
+            "description": null
+        },
+        {
+            "id": "delete-me-2",
+            "name": "delete me 2",
+            "description": null
+        },
+        {
+            "id": "ux-package-install-chart-js",
+            "name": "UX Package: install chart-js",
+            "description": null
+        },
+        {
             "id": "react-enable-in-webpack",
             "name": "React: enable in webpack",
             "description": null
@@ -111,5 +126,5 @@
             "description": null
         }
     ],
-    "sha": "5a35af359592220e5e26ee65cc22520a67502683"
+    "sha": "d534dcc2ae35ad02370f451be2f30fbecd174a81"
 }

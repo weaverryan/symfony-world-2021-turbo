@@ -1,8 +1,8 @@
 diff --git a/package.json b/package.json
-index e36dc07..8469ee7 100644
+index e7c5ed0..58893bf 100644
 --- a/package.json
 +++ b/package.json
-@@ -17,5 +17,9 @@
+@@ -19,5 +19,9 @@
          "dev": "encore dev",
          "watch": "encore dev --watch",
          "build": "encore production --progress"
@@ -13,10 +13,10 @@ index e36dc07..8469ee7 100644
      }
  }
 diff --git a/yarn.lock b/yarn.lock
-index b80693a..bdd70ff 100644
+index 917a662..09283e0 100644
 --- a/yarn.lock
 +++ b/yarn.lock
-@@ -2917,7 +2917,7 @@ jest-worker@^27.0.6:
+@@ -2943,7 +2943,7 @@ jest-worker@^27.0.6:
      merge-stream "^2.0.0"
      supports-color "^8.0.0"
  
@@ -25,7 +25,7 @@ index b80693a..bdd70ff 100644
    version "4.0.0"
    resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
    integrity sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==
-@@ -3033,6 +3033,13 @@ lodash@^4.17.14, lodash@^4.17.20, lodash@^4.17.21:
+@@ -3059,6 +3059,13 @@ lodash@^4.17.14, lodash@^4.17.20, lodash@^4.17.21:
    resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
    integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
  
@@ -39,7 +39,7 @@ index b80693a..bdd70ff 100644
  lru-cache@^6.0.0:
    version "6.0.0"
    resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-6.0.0.tgz#6d6fe6570ebd96aaf90fcad1dafa3b2566db3a94"
-@@ -3246,7 +3253,7 @@ nth-check@^2.0.0:
+@@ -3277,7 +3284,7 @@ nth-check@^2.0.0:
    dependencies:
      boolbase "^1.0.0"
  
@@ -48,7 +48,7 @@ index b80693a..bdd70ff 100644
    version "4.1.1"
    resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
    integrity sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM=
-@@ -3821,6 +3828,23 @@ raw-body@2.4.0:
+@@ -3852,6 +3859,23 @@ raw-body@2.4.0:
      iconv-lite "0.4.24"
      unpipe "1.0.0"
  
@@ -72,7 +72,7 @@ index b80693a..bdd70ff 100644
  readable-stream@^2.0.1:
    version "2.3.7"
    resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.3.7.tgz#1eca1cf711aef814c04f62252a36a62f6cb23b57"
-@@ -4034,6 +4058,14 @@ safe-buffer@>=5.1.0, safe-buffer@^5.0.1, safe-buffer@^5.1.0, safe-buffer@~5.2.0:
+@@ -4065,6 +4089,14 @@ safe-buffer@>=5.1.0, safe-buffer@^5.0.1, safe-buffer@^5.1.0, safe-buffer@~5.2.0:
    resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
    integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
  

@@ -1,28 +1,42 @@
 diff --git a/assets/components/PrintMessage.js b/assets/components/PrintMessage.js
 new file mode 100644
-index 0000000..a69e266
+index 0000000..ffc1039
 --- /dev/null
 +++ b/assets/components/PrintMessage.js
-@@ -0,0 +1,5 @@
+@@ -0,0 +1,11 @@
 +import React from 'react';
 +
 +export function PrintMessage(props) {
-+    return <span>{props.message} rendered at {(new Date()).toTimeString()}</span>
++    return (
++        <span>
++            {props.message} rendered at
++            <span> </span>
++            {(new Date()).toTimeString()}
++        </span>
++    )
 +}
 diff --git a/assets/controllers/react-footer-controller.js b/assets/controllers/react-footer-controller.js
 new file mode 100644
-index 0000000..2e8d8b3
+index 0000000..7889753
 --- /dev/null
 +++ b/assets/controllers/react-footer-controller.js
-@@ -0,0 +1,10 @@
+@@ -0,0 +1,18 @@
++// assets/controllers/grow-flock-controller.js
 +import { Controller } from 'stimulus';
 +import { render } from 'react-dom';
 +import { PrintMessage } from '../components/PrintMessage';
 +import React from 'react';
 +
 +export default class extends Controller {
++    static values = {
++        message: String
++    }
++
 +    connect() {
-+        render(<PrintMessage message="Symfony World 2021!" />, this.element);
++        render(
++            <PrintMessage message={this.messageValue} />,
++            this.element
++        );
 +    }
 +}
 diff --git a/assets/styles/app.css b/assets/styles/app.css
@@ -39,14 +53,16 @@ index 0e818ea..3c9b077 100644
 +    margin-bottom: 50px;
 +}
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index 6b30e5e..ee75a6d 100644
+index 6b30e5e..d5cd087 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
-@@ -14,5 +14,7 @@
+@@ -14,5 +14,9 @@
      </head>
      <body>
          {% block body %}{% endblock %}
 +
-+        <footer {{ stimulus_controller('react-footer') }}></footer>
++        <footer {{ stimulus_controller('react-footer', {
++            message: 'Symfony World 2021!'
++        }) }}></footer>
      </body>
  </html>

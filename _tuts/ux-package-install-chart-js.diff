@@ -1,0 +1,259 @@
+diff --git a/assets/controllers.json b/assets/controllers.json
+index 7ba2551..7f4929b 100644
+--- a/assets/controllers.json
++++ b/assets/controllers.json
+@@ -5,6 +5,12 @@
+                 "enabled": true,
+                 "fetch": "eager"
+             }
++        },
++        "@symfony/ux-chartjs": {
++            "chart": {
++                "enabled": true,
++                "fetch": "eager"
++            }
+         }
+     },
+     "entrypoints": []
+diff --git a/composer.json b/composer.json
+index e2ef6dc..b72ab6e 100644
+--- a/composer.json
++++ b/composer.json
+@@ -14,6 +14,7 @@
+         "symfony/framework-bundle": "5.4.*",
+         "symfony/runtime": "5.4.*",
+         "symfony/twig-bundle": "5.4.*",
++        "symfony/ux-chartjs": "^1.3",
+         "symfony/ux-turbo": "^1.3",
+         "symfony/validator": "5.4.*",
+         "symfony/webpack-encore-bundle": "^1.12",
+diff --git a/composer.lock b/composer.lock
+index bb75a52..e8e3d13 100644
+--- a/composer.lock
++++ b/composer.lock
+@@ -4,7 +4,7 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "1413ff41f1170eba6c937f170778105e",
++    "content-hash": "eec0ec1cddd5ca3279bdc9207892b1fb",
+     "packages": [
+         {
+             "name": "psr/cache",
+@@ -3236,6 +3236,91 @@
+             ],
+             "time": "2021-11-03T09:24:47+00:00"
+         },
++        {
++            "name": "symfony/ux-chartjs",
++            "version": "v1.3.0",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/symfony/ux-chartjs.git",
++                "reference": "e75ae488a6cfaf5e264f1fc4190785d914be8785"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/symfony/ux-chartjs/zipball/e75ae488a6cfaf5e264f1fc4190785d914be8785",
++                "reference": "e75ae488a6cfaf5e264f1fc4190785d914be8785",
++                "shasum": ""
++            },
++            "require": {
++                "php": ">=7.2.5",
++                "symfony/config": "^4.4.17|^5.0",
++                "symfony/dependency-injection": "^4.4.17|^5.0",
++                "symfony/http-kernel": "^4.4.17|^5.0"
++            },
++            "conflict": {
++                "symfony/flex": "<1.13"
++            },
++            "require-dev": {
++                "symfony/framework-bundle": "^4.4.17|^5.0",
++                "symfony/phpunit-bridge": "^5.2",
++                "symfony/twig-bundle": "^4.4.17|^5.0",
++                "symfony/var-dumper": "^4.4.17|^5.0"
++            },
++            "type": "symfony-bundle",
++            "extra": {
++                "branch-alias": {
++                    "dev-main": "1.3-dev"
++                },
++                "thanks": {
++                    "name": "symfony/ux",
++                    "url": "https://github.com/symfony/ux"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "Symfony\\UX\\Chartjs\\": ""
++                },
++                "exclude-from-classmap": [
++                    "/Tests/"
++                ]
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Titouan Galopin",
++                    "email": "galopintitouan@gmail.com"
++                },
++                {
++                    "name": "Symfony Community",
++                    "homepage": "https://symfony.com/contributors"
++                }
++            ],
++            "description": "Chart.js integration for Symfony",
++            "homepage": "https://symfony.com",
++            "keywords": [
++                "symfony-ux"
++            ],
++            "support": {
++                "source": "https://github.com/symfony/ux-chartjs/tree/v1.3.0"
++            },
++            "funding": [
++                {
++                    "url": "https://symfony.com/sponsor",
++                    "type": "custom"
++                },
++                {
++                    "url": "https://github.com/fabpot",
++                    "type": "github"
++                },
++                {
++                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
++                    "type": "tidelift"
++                }
++            ],
++            "time": "2021-05-20T17:58:12+00:00"
++        },
+         {
+             "name": "symfony/ux-turbo",
+             "version": "v1.3.0",
+diff --git a/config/bundles.php b/config/bundles.php
+index 5cd145b..25a3a46 100644
+--- a/config/bundles.php
++++ b/config/bundles.php
+@@ -9,4 +9,5 @@ return [
+     Symfony\Bundle\WebProfilerBundle\WebProfilerBundle::class => ['dev' => true, 'test' => true],
+     Symfony\Bundle\MonologBundle\MonologBundle::class => ['all' => true],
+     Symfony\Bundle\DebugBundle\DebugBundle::class => ['dev' => true],
++    Symfony\UX\Chartjs\ChartjsBundle::class => ['all' => true],
+ ];
+diff --git a/package.json b/package.json
+index 437398d..43dcb41 100644
+--- a/package.json
++++ b/package.json
+@@ -2,8 +2,10 @@
+     "devDependencies": {
+         "@hotwired/turbo": "^7.0.0-beta.5",
+         "@symfony/stimulus-bridge": "^2.0.0",
++        "@symfony/ux-chartjs": "file:vendor/symfony/ux-chartjs/Resources/assets",
+         "@symfony/ux-turbo": "file:vendor/symfony/ux-turbo/Resources/assets",
+         "@symfony/webpack-encore": "^1.0.0",
++        "chart.js": "^2.9.4",
+         "core-js": "^3.0.0",
+         "regenerator-runtime": "^0.13.2",
+         "stimulus": "^2.0.0",
+diff --git a/symfony.lock b/symfony.lock
+index 6f3fbc4..697eeaa 100644
+--- a/symfony.lock
++++ b/symfony.lock
+@@ -209,6 +209,9 @@
+             "templates/base.html.twig"
+         ]
+     },
++    "symfony/ux-chartjs": {
++        "version": "v1.3.0"
++    },
+     "symfony/ux-turbo": {
+         "version": "v1.3.0"
+     },
+diff --git a/templates/default/index.html.twig b/templates/default/index.html.twig
+index c7251a6..7acaad5 100644
+--- a/templates/default/index.html.twig
++++ b/templates/default/index.html.twig
+@@ -12,6 +12,7 @@
+             </div>
+             <button {{ stimulus_action('grow-flock', 'grow') }}>Grow my flock!</button>
+         </div>
++
+         <hr>
+         Change animal:
+         {% for animal in animals %}
+diff --git a/yarn.lock b/yarn.lock
+index 91265d8..f2aa74b 100644
+--- a/yarn.lock
++++ b/yarn.lock
+@@ -950,6 +950,9 @@
+     loader-utils "^2.0.0"
+     schema-utils "^3.0.0"
+ 
++"@symfony/ux-chartjs@file:vendor/symfony/ux-chartjs/Resources/assets":
++  version "1.1.0"
++
+ "@symfony/ux-turbo@file:vendor/symfony/ux-turbo/Resources/assets":
+   version "0.1.0"
+ 
+@@ -1569,6 +1572,29 @@ chalk@^4.0.0:
+     ansi-styles "^4.1.0"
+     supports-color "^7.1.0"
+ 
++chart.js@^2.9.4:
++  version "2.9.4"
++  resolved "https://registry.yarnpkg.com/chart.js/-/chart.js-2.9.4.tgz#0827f9563faffb2dc5c06562f8eb10337d5b9684"
++  integrity sha512-B07aAzxcrikjAPyV+01j7BmOpxtQETxTSlQ26BEYJ+3iUkbNKaOJ/nDbT6JjyqYxseM0ON12COHYdU2cTIjC7A==
++  dependencies:
++    chartjs-color "^2.1.0"
++    moment "^2.10.2"
++
++chartjs-color-string@^0.6.0:
++  version "0.6.0"
++  resolved "https://registry.yarnpkg.com/chartjs-color-string/-/chartjs-color-string-0.6.0.tgz#1df096621c0e70720a64f4135ea171d051402f71"
++  integrity sha512-TIB5OKn1hPJvO7JcteW4WY/63v6KwEdt6udfnDE9iCAZgy+V4SrbSxoIbTw/xkUIapjEI4ExGtD0+6D3KyFd7A==
++  dependencies:
++    color-name "^1.0.0"
++
++chartjs-color@^2.1.0:
++  version "2.4.1"
++  resolved "https://registry.yarnpkg.com/chartjs-color/-/chartjs-color-2.4.1.tgz#6118bba202fe1ea79dd7f7c0f9da93467296c3b0"
++  integrity sha512-haqOg1+Yebys/Ts/9bLo/BqUcONQOdr/hoEr2LLTRl6C5LXctUdHxsCYfvQVg5JIxITrfCNUDr4ntqmQk9+/0w==
++  dependencies:
++    chartjs-color-string "^0.6.0"
++    color-convert "^1.9.3"
++
+ chokidar@^3.5.2:
+   version "3.5.2"
+   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.5.2.tgz#dba3976fcadb016f66fd365021d91600d01c1e75"
+@@ -1611,7 +1637,7 @@ clone-deep@^4.0.1:
+     kind-of "^6.0.2"
+     shallow-clone "^3.0.0"
+ 
+-color-convert@^1.9.0:
++color-convert@^1.9.0, color-convert@^1.9.3:
+   version "1.9.3"
+   resolved "https://registry.yarnpkg.com/color-convert/-/color-convert-1.9.3.tgz#bb71850690e1f136567de629d2d5471deda4c1e8"
+   integrity sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg==
+@@ -1630,7 +1656,7 @@ color-name@1.1.3:
+   resolved "https://registry.yarnpkg.com/color-name/-/color-name-1.1.3.tgz#a7d0558bd89c42f795dd42328f740831ca53bc25"
+   integrity sha1-p9BVi9icQveV3UIyj3QIMcpTvCU=
+ 
+-color-name@~1.1.4:
++color-name@^1.0.0, color-name@~1.1.4:
+   version "1.1.4"
+   resolved "https://registry.yarnpkg.com/color-name/-/color-name-1.1.4.tgz#c2a09a87acbde69543de6f63fa3995c826c536a2"
+   integrity sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==
+@@ -3095,6 +3121,11 @@ mkdirp@^0.5.5:
+   dependencies:
+     minimist "^1.2.5"
+ 
++moment@^2.10.2:
++  version "2.29.1"
++  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.1.tgz#b2be769fa31940be9eeea6469c075e35006fa3d3"
++  integrity sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==
++
+ ms@2.0.0:
+   version "2.0.0"
+   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
