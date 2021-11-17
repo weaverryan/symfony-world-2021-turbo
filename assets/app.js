@@ -10,13 +10,3 @@ import './styles/app.css';
 
 // start the Stimulus application
 import './bootstrap';
-
-const syncButton = (linkElement) => {
-    document.querySelector('.js-custom-animal-target').innerHTML = linkElement.value || '☹️';
-}
-document.querySelector('.js-custom-animal').addEventListener('keyup', (event) => {
-    syncButton(event.currentTarget);
-});
-document.querySelector('.js-custom-animal').addEventListener('change', (event) => {
-    syncButton(event.currentTarget);
-});
