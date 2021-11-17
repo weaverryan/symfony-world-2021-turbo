@@ -10,3 +10,20 @@ import './styles/app.css';
 
 // start the Stimulus application
 import './bootstrap';
+
+const flockEl = document.getElementById('flock');
+document.querySelector('.js-grow-flock').addEventListener('click', (event) => {
+    event.preventDefault();
+
+    flockEl.innerHTML = flockEl.innerHTML + flockEl.dataset.animal;
+});
+
+const syncButton = (linkElement) => {
+    document.querySelector('.js-custom-animal-target').innerHTML = linkElement.value || '☹️';
+}
+document.querySelector('.js-custom-animal').addEventListener('keyup', (event) => {
+    syncButton(event.currentTarget);
+});
+document.querySelector('.js-custom-animal').addEventListener('change', (event) => {
+    syncButton(event.currentTarget);
+});

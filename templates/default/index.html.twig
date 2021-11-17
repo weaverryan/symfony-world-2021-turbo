@@ -5,7 +5,7 @@
         <h1>Grow your Flock of {{ chosenAnimal }}</h1>
 
         <div>
-            <div class="flock" id="flock">
+            <div class="flock" id="flock" data-animal="{{ chosenAnimal }}">
                 {{ chosenAnimal }}
             </div>
             <button class="js-grow-flock">Grow my flock!</button>
@@ -27,10 +27,10 @@
             <input
                 name="{{ field_name(form.animal) }}"
                 value="{{ field_value(form.animal) }}"
-                class="{{ field_errors(form.animal)|length > 0 ? 'has-error' }}"
+                class="js-custom-animal {{ field_errors(form.animal)|length > 0 ? 'has-error' }}"
             />
 
-            <button type="submit" style="font-size: 1em;" formnovalidate>🦖</button>
+            <button type="submit" class="js-custom-animal-target" style="font-size: 1em;" formnovalidate>🦖</button>
         {{ form_end(form) }}
     </div>
 {% endblock %}
