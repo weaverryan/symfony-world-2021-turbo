@@ -47,3 +47,8 @@ input.has-error {
     background-color: #ffd7d7;
     border: 1px solid red;
 }
+footer {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}

@@ -14,5 +14,9 @@
     </head>
     <body>
         {% block body %}{% endblock %}
+
+        <footer {{ stimulus_controller('react-footer', {
+            message: 'Symfony World 2021!'
+        }) }}></footer>
     </body>
 </html>
