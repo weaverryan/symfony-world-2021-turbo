@@ -1,3 +1,49 @@
 body {
     background-color: lightgray;
+
+}
+.container {
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    background: whitesmoke;
+    border-radius: 3px;
+    padding: 2em;
+    margin-top: 30px;
+}
+.container h1 {
+    margin-top: 0;
+}
+.flock {
+    border: 3px dashed red;
+    margin-bottom: 1em;
+}
+button {
+    border: none;
+    border-color: transparent;
+    border-radius: 4px;
+    font-size: 1.3em;
+    cursor: pointer;
+    background-color: #25a1dd;
+    color: #e1e1e1;
+    text-decoration: none;
+    padding: 4px 8px;
+}
+a {
+    text-decoration: none;
+    font-size: 1.2em;
+}
+form {
+    display: inline;
+}
+form button {
+    line-height: 1.3em;
+}
+input {
+    width: 30px;
+    padding: .4em;
+}
+input.has-error {
+    background-color: #ffd7d7;
+    border: 1px solid red;
 }

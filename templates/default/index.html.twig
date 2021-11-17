@@ -1,15 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Grow your Flock of {{ chosenAnimal }}</h1>
+    <div class="container">
+        <h1>Grow your Flock of {{ chosenAnimal }}</h1>
 
-    <div>
         <div>
             <div class="flock" id="flock">
                 {{ chosenAnimal }}
             </div>
-            <a href="#" class="js-grow-flock">Grow my flock!</a>
+            <button class="js-grow-flock">Grow my flock!</button>
         </div>
+        <hr>
+        Change animal:
         {% for animal in animals %}
             {% if animal == chosenAnimal %}
                 {{ animal }}
