@@ -11,11 +11,6 @@ import './styles/app.css';
 // start the Stimulus application
 import './bootstrap';
 
-window.addEventListener('DOMContentLoaded', (event) => {
-    console.log('page is ready!');
-});
-console.log('script is done!');
-
 const flockEl = document.getElementById('flock');
 document.querySelector('.js-grow-flock').addEventListener('click', (event) => {
     event.preventDefault();
