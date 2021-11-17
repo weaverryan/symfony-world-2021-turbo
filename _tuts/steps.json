@@ -91,16 +91,6 @@
             "description": null
         },
         {
-            "id": "delete-me-1",
-            "name": "delete me 1",
-            "description": null
-        },
-        {
-            "id": "delete-me-2",
-            "name": "delete me 2",
-            "description": null
-        },
-        {
             "id": "ux-package-install-chart-js",
             "name": "UX Package: install chart-js",
             "description": null
