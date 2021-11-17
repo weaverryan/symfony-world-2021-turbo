@@ -4,11 +4,13 @@
     <div class="container">
         <h1>Grow your Flock of {{ chosenAnimal }}</h1>
 
-        <div>
-            <div class="flock" id="flock" data-animal="{{ chosenAnimal }}">
+        <div {{ stimulus_controller('grow-flock', {
+            animal: chosenAnimal
+        }) }}>
+            <div class="flock" {{ stimulus_target('grow-flock', 'flock') }}>
                 {{ chosenAnimal }}
             </div>
-            <button class="js-grow-flock">Grow my flock!</button>
+            <button {{ stimulus_action('grow-flock', 'grow') }}>Grow my flock!</button>
         </div>
         <hr>
         Change animal:
