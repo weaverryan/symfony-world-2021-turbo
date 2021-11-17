@@ -30,10 +30,10 @@ class DefaultController extends AbstractController
 
         $animals = ['🐑', '🐵', '🦛', '🐧', '🐘'];
 
-        return $this->render('default/index.html.twig', [
+        return $this->renderForm('default/index.html.twig', [
             'chosenAnimal' => $animal,
             'animals' => $animals,
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 }
