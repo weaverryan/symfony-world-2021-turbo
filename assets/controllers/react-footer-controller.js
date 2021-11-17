@@ -4,6 +4,7 @@ import { render } from 'react-dom';
 import { PrintMessage } from '../components/PrintMessage';
 import React from 'react';
 
+/* stimulusFetch: 'lazy' */
 export default class extends Controller {
     static values = {
         message: String
